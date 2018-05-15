@@ -41,9 +41,7 @@ export function revenues(model) {
 	return (state = {
 		modalVisible: false,
 		records: loadState(`${model}`),
-		totalIncome: 0,
-		totalExpenses: 0,
-		grandTotal: 0,
+		total: 0,
 	}, action) => {
 		switch (action.type) {
 			case `ADD_${model}`:
@@ -79,7 +77,7 @@ export function revenues(model) {
 				return Object.assign({}, state, {
 					modalContent: action.content,
 				})
-			case `TOTAL_${model}`:
+			case `TOTAL`:
 				total = 0;
 				clonedRecords = state.records.slice();
 				total = calculateTotal(clonedRecords)

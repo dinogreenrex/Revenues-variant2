@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 class CurrentIncomeBase extends Component {
 	componentDidMount(){
-		this.props.dispatch({type: "TOTAL_INCOME"})
+		this.props.dispatch({type: "TOTAL"})
 	}
 	render() {
 		return (

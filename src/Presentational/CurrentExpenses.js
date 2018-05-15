@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 
 class CurrentExpensesBase extends Component {
 	componentDidMount(){
-		this.props.dispatch({type: "TOTAL_EXPENSES"})
+		this.props.dispatch({type: `TOTAL`})
 	}
 	render() {
 		return (

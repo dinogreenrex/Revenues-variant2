@@ -32,6 +32,10 @@ store.subscribe(throttle(() => {
 store.subscribe(throttle(() => {
 	saveState('expense', store.getState().expense.records)
 }, 1000));
+store.subscribe(throttle(() => {
+	saveState('total', Number(store.getState().total.grandTotal))
+}, 1000));
+
 
 
 

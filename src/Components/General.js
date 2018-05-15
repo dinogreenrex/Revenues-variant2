@@ -31,7 +31,7 @@ class GeneralBase extends React.Component{
 
 					<List grid={{gutter: 8, xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2}}>
 						<List.Item>
-									<CurrentIncome />
+									<CurrentIncome model=""/>
 							</List.Item>
 						<List.Item>
 								<CurrentExpenses />
