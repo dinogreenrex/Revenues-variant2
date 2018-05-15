@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect, Link, withRouter} from 'react-router-dom';
 import {General} from './Components/General'
-import {Income} from './Components/Income'
-import {Expenses} from './Components/Expenses'
+import {Revenues} from './Components/Revenues'
 import {Col,Row} from 'antd'
 import App from './App'
-
+import {connect} from 'react-redux';
 export class RouterMain extends React.Component {
 	constructor(props){
 		super(props);
@@ -24,8 +23,9 @@ export class RouterMain extends React.Component {
 	}
 }
 
-export class Routes extends React.Component{
+export class RoutesBase extends React.Component{
 render(){
+
 	return (
 		<div>
 			<Row>
@@ -36,17 +36,24 @@ render(){
 			/>
 			<Route exact
 			       path="/Income"
-			       render={()=> <Income model="income"/>}
+			       render={()=> <Revenues model="income" {...this.props.income}/>}
 			/>
 			<Route exact
 			       path="/Expenses"
-			       render={()=> <Expenses model="expense"/>}
+			       render={()=> <Revenues model="expense"  {...this.props.expense}/>}
 			/>
 
 			</Row>
 		</div>
 	)
 }
-
 }
+export const Routes = withRouter(connect(state => {
+	return {
+		expense : state.expense,
+		income: state.income,
+		total: state.total,
+	}
+})(RoutesBase));
+
 

@@ -23,9 +23,9 @@ class CurrentBallanceBase extends Component {
 						<div className="total-container">
 						<List.Item >
 							<picture>
-								<source media="(min-width: 900px)" srcset={`${ballanceImage_medium}`}/>
-									<source media="(min-width: 480px)" srcset={`${ballanceImage}`} />
-										<img src={`${ballanceImage}`} alt="IfItDoesntMatchAnyMedia" />
+								<source media="(min-width: 900px)" srcSet={`${ballanceImage_medium}`}/>
+									<source media="(min-width: 480px)" srcSet={`${ballanceImage}`} />
+										<img src={`${ballanceImage}`} alt="picturefill is working" />
 							</picture>
 							<img />
 							<div className="text"> {this.props.totalBallance}</div>

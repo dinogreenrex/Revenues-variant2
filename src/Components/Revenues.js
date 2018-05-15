@@ -1,24 +1,22 @@
 import React, {Component} from 'react'
-import { Modal, Button, List, Card, Col, Row } from 'antd';
+import { Modal, Button, List, Card,Col, Row } from 'antd';
 import 'antd/lib/modal/style/css'
 import 'antd/lib/button/style/css'
 import 'antd/lib/list/style/css'
 import 'antd/lib/card/style/css'
 import {TheForm} from '../Forms/TheForm'
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
-import {v4} from 'node-uuid'
-class IncomeBase extends React.Component{
-	constructor(props){
+
+export class RevenuesBase extends React.Component {
+	constructor(props) {
 		super(props);
 		this.showModalWindow = this.showModalWindow.bind(this);
 		this.onCancel = this.onCancel.bind(this);
 	}
 
-	showModalWindow(content=null){
-		this.props.dispatch({type: "MODAL_VISIBLE", value: true })
+	showModalWindow(content = null) {
+		this.props.dispatch({type: "MODAL_VISIBLE", value: true})
 		content ? this.props.dispatch({type: 'MODAL_CONTENT', content: content, editInAction: true}) : null
-		//TODO so the above should be SELECTED_${model}_ID
 	}
 
 	onCancel = (e) => {
@@ -36,12 +34,12 @@ class IncomeBase extends React.Component{
 				return;
 			}
 			let formData = {
-				id: v4(),
+				id: this.props.id,
 				name: values.name,
 				value: values.value,
 				model: this.props.model
 			}
-			this.props.dispatch({type:`ADD_${this.props.model}`, record: formData})
+			this.props.dispatch({type: `ADD_${this.props.model}`, record: formData})
 			form.resetFields();
 			this.props.dispatch({type: 'MODAL_VISIBLE', value: false})
 		});
@@ -73,10 +71,13 @@ class IncomeBase extends React.Component{
 		form.resetFields();
 		this.props.dispatch({type: 'MODAL_VISIBLE', value: false})
 	}
+	/************************
+	 *
+	 * @param formRef
+	 */
 	saveFormRef = (formRef) => {
 		this.formRef = formRef;
 	}
-
 	render(){
 		return(
 			<div>
@@ -98,9 +99,9 @@ class IncomeBase extends React.Component{
 					wrappedComponentRef={this.saveFormRef}
 					visible={this.props.modalVisible}
 					onCancel={this.onCancel}
-					onCreate={()=>this.handleCreate()}
-					onUpdate={()=>this.handleUpdate()}
-					onDelete={() => this.handleDelete()}
+					onCreate={this.handleCreate}
+					onUpdate={this.handleUpdate}
+					onDelete={this.handleDelete}
 					{...this.props.modalContent}
 				/>
 
@@ -109,16 +110,4 @@ class IncomeBase extends React.Component{
 	}
 }
 
-IncomeBase.propTypes = {
-	modalVisible: PropTypes.bool,
-	modalContent: PropTypes.object,
-	records: PropTypes.array,
-}
-export const Income= connect(
-	state => {
-		return {
-			modalVisible : state.income.modalVisible,
-			modalContent: state.income.modalContent,
-			records: state.income.records,
-		}
-})(IncomeBase)
+export const Revenues = connect()(RevenuesBase)

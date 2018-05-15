@@ -1,17 +1,8 @@
 import React, { Component } from "react";
-/*import { createStore } from 'redux';
-import {revenuesApp} from './reducers/index';
-import {connect} from 'react-redux';*/
-import {Col, Row } from 'antd';
-/*
-import 'antd/lib/modal/style/css'
-import 'antd/lib/button/style/css'
-import 'antd/lib/list/style/css'
-import 'antd/lib/card/style/css'
-import { LocalForm, Control, actions, Form } from 'react-redux-form';
-import {TheForm} from './Forms/TheForm'*/
+import {Col, Row} from 'antd';
 import {Link} from 'react-router-dom';
 import {Routes} from './RouterDirectives'
+
 
 
 class App extends Component {
