@@ -1,0 +1,24 @@
+.BallanceImage{
+  background: url("../images/ListElement-large.png") no-repeat ;
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5),
+all and (-o-min-device-pixel-ratio: 3/2),
+all and (min--moz-device-pixel-ratio: 1.5),
+all and (min-device-pixel-ratio: 1.5) {
+  div.background {
+    background: url("../images/ListElement-large.png") no-repeat 50% 50% ;
+    padding: 14em;
+  }
+}
+.List-Total-Container-Item{
+  text-align: center;
+}
+
+.font-container {
+  font-size: 1.5em;
+
+}
+
+.wrapper-class-name{
+  fill: #123456;
+}
