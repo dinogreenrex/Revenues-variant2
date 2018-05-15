@@ -25,7 +25,7 @@ class GeneralBase extends React.Component{
 			<div style={{ background: '#ECECEC', padding: '30px' }}>
 
 				<List>
-						<List>
+						<List grid={{gutter: 8, xs: 1, sm: 1, md: 1, lg: 1, xl: 1, xxl: 1}}>
 							<List.Item><CurrentBallance /></List.Item>
 						</List>
 

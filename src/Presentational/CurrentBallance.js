@@ -9,6 +9,8 @@ import PropTypes from 'prop-types'
 import '../css/CurrentBallance.css'
 import ballanceImage from '../images/ListElement-small.png'
 import ballanceImage_medium from '../images/ListElement-medium.png'
+import '../App.css'
+
 class CurrentBallanceBase extends Component {
 	componentDidMount(){
 			this.props.dispatch({type:'TOTAL_BALLANCE'})
@@ -17,9 +19,20 @@ class CurrentBallanceBase extends Component {
 		return (
 			<List  header="CurrentBallance">
 				<List.Item>
-					<List.Item><img src={`${ballanceImage}`}/></List.Item>
-					{this.props.totalBallance}
+					<Row type="flex" justify="center" align="top">
+						<div className="total-container">
+						<List.Item >
+							<picture>
+								<source media="(min-width: 900px)" srcset={`${ballanceImage_medium}`}/>
+									<source media="(min-width: 480px)" srcset={`${ballanceImage}`} />
+										<img src={`${ballanceImage}`} alt="IfItDoesntMatchAnyMedia" />
+							</picture>
+							<img />
+							<div className="text"> {this.props.totalBallance}</div>
 
+						</List.Item>
+							</div>
+					</Row>
 				</List.Item>
 				<List.Item>
 				</List.Item>
