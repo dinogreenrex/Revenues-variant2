@@ -1,14 +1,32 @@
 import React from 'react';
-import _ from 'lodash';
 import {loadState} from '../localStorage'
 
 
-function calculateTotal(records){
+let total =0;
+
+
+export function calculateTotal(records){
 	let sum = 0;
 	records.map(item => {
 		sum += Number(item.value);
 	})
 	return Number(sum).toFixed(2);
+}
+export const grandTotal = (state ={
+	grandTotal: 0,
+}, action) => {
+	switch(action.type) {
+		case 'TOTAL_BALLANCE':
+			total = 0;
+			let totalincome = Number(calculateTotal(loadState('income')));
+			let totalexpenses = Number(calculateTotal(loadState('expense')));
+			total = totalincome + totalexpenses;
+			return Object.assign({}, state, {
+				grandTotal: total.toFixed(2),
+			})
+		default:
+			return state;
+	}
 }
 
 /*********************************************
@@ -19,13 +37,13 @@ let clonedRecords = 0;
 let newRecord = 0;
 let editedRecord = 0;
 let indexOfRecord = 0;
-let total = 0;
 export function revenues(model) {
 	return (state = {
 		modalVisible: false,
 		records: loadState(`${model}`),
 		totalIncome: 0,
 		totalExpenses: 0,
+		grandTotal: 0,
 	}, action) => {
 		switch (action.type) {
 			case `ADD_${model}`:
@@ -62,11 +80,13 @@ export function revenues(model) {
 					modalContent: action.content,
 				})
 			case `TOTAL_${model}`:
+				total = 0;
 				clonedRecords = state.records.slice();
 				total = calculateTotal(clonedRecords)
 				return Object.assign({}, state, {
 					total: total,
 				})
+
 			default:
 				return state;
 		}

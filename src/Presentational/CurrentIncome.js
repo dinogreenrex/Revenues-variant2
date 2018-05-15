@@ -29,6 +29,6 @@ class CurrentIncomeBase extends Component {
 
 export const CurrentIncome = connect(state =>{
 	return {
-		currentIncome: state.income.totalIncome,
+		currentIncome: state.income.total
 	}
 })(CurrentIncomeBase);

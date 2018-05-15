@@ -31,6 +31,6 @@ class CurrentBallanceBase extends Component {
 
 export const CurrentBallance= connect(state =>{
 	return {
-		totalBallance: state.total.totalBallance,
+		totalBallance: state.total.grandTotal,
 	}
 })(CurrentBallanceBase);

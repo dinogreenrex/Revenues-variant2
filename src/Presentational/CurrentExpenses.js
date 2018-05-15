@@ -31,6 +31,6 @@ class CurrentExpensesBase extends Component {
 }*/
 export const CurrentExpenses = connect(state =>{
 	return {
-		currentExpenses: state.expenses.totalExpenses,
+		currentExpenses: state.expense.total,
 	}
 })(CurrentExpensesBase);
